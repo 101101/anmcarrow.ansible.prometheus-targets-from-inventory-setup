@@ -1,0 +1,5 @@
+---
+
+prometheus_server: ""
+prometheus_custom_targets_path: ""
+prometheus_reload_url: ""

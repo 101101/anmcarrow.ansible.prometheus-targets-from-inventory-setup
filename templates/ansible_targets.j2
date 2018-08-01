@@ -1,0 +1,6 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+{% for ip, name in hostvars.iteritems() -%}
+{{ hostvars[ip]['ansible_ssh_host'] }} {{ name['inventory_hostname'] }} {{ name['inventory_hostname'] }}.{{ parent_dns_zone }}
+{% endfor %}

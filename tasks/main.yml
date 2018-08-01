@@ -1,0 +1,22 @@
+---
+
+- name: Set appropriate hostname for targeted host(s)
+  hostname:
+   name: "{{ inventory_hostname }}.{{ parent_dns_zone }}"
+
+- name: Deploy /etc/hosts file with targeted host name only
+  template:
+    src: hosts-single.j2
+    dest: /etc/hosts
+    mode: 0644
+    backup: yes
+  when: all_hostnames_deploy == 'no'
+
+- name: Deploy /etc/hosts file with all inventarized hosts names
+  template:
+    src: hosts-full.j2
+    dest: /etc/hosts
+    mode: 0644
+    backup: yes
+  tags: localhostname
+  when: all_hostnames_deploy == 'yes'
