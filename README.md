@@ -1,9 +1,13 @@
-Generic hostname setup ansible role
+Custom Prometheus-monitoring custom targets Ansible role
 ==============================
 
-This Ansible role setup hostname of target hosts according to `inventory_hostname` (from inventory file) and `parent_dns_zone` (from `defaults/main.yml`) Ansible variables.cd 
+This Ansible role create target file for 
+[Prometheus custom service discovery](https://prometheus.io/blog/2015/06/01/advanced-service-discovery/#custom-service-discovery)
+and add to this file all hosts from Ansible inventory.
 
-It's also can add to `/etc/host` file on targeted host(s) all your hosts with IP (based on `ansible_ssh_host` variable) from inventory file. This optional task will do if you will set `all_hostnames_deploy` variable to `yes` while run the playbook.
+**Note:** you need to (re)define `prometheus_custom_targets_path` variable
+before run thois role and configure your Prometheus server to use this cusdtom
+path (according to [article](https://prometheus.io/blog/2015/06/01/advanced-service-discovery/#custom-service-discovery)).
 
 Requirements
 ------------
@@ -26,7 +30,7 @@ Example Playbook
 ```yml
 - hosts: all
   roles:
-    - generic.hostname-to-inventoryname-setup
+    - generic.prometheus-targets-from-inventory-setup
 ```
 
 License
