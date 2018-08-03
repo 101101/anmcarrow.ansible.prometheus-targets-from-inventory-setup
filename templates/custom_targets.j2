@@ -1,0 +1,4 @@
+
+- targets: [{% for ip, name in hostvars.iteritems() -%} '{{ hostvars[ip]['ansible_ssh_host'] }}:{{ prometheus_exporter_port }}',{% endfor %}]
+  labels:
+    job: '{{ prometheus_custom_targets_job_label }}'
