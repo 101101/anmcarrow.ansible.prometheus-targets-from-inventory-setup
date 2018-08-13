@@ -9,6 +9,8 @@ and add to this file all hosts from Ansible inventory.
 before run thois role and configure your Prometheus server to use this cusdtom
 path (according to [article](https://prometheus.io/blog/2015/06/01/advanced-service-discovery/#custom-service-discovery)).
 
+**Original repo:** https://github.com/anmcarrow/ansible.prometheus-targets-from-inventory-setup 
+
 Requirements
 ------------
 
